@@ -5,8 +5,7 @@ function playableEmbed(value) {
     const url = new URL(value);
     if (url.protocol !== 'https:') return '';
     const officialEmbed = url.hostname === 'itch.io' && url.pathname.startsWith('/embed-upload/');
-    const hostedBuild = url.hostname === 'html-classic.itch.zone' && /^\/html\/\d+\/.+\/index\.html$/.test(url.pathname);
-    return officialEmbed || hostedBuild ? url.href : '';
+    return officialEmbed ? url.href : '';
   } catch { return ''; }
 }
 function mountGamePlayer(player, project, source) {
@@ -38,8 +37,8 @@ function mountGamePlayer(player, project, source) {
     frame.setAttribute('scrolling','no');
     frame.referrerPolicy='strict-origin-when-cross-origin';frame.src=source;
     const width=project.playerWidth||960,height=project.playerHeight||600;
-    // O template Unity inclui 42 px abaixo do canvas. Enquadre só o jogo:
-    // o rodapé externo (e seu botão de tela cheia) fica fora da área visível.
+    // O embed oficial é exibido inteiro, nas dimensões fornecidas.
+    // Os controles do serviço ficam dentro do iframe oficial.
     const viewport=make('div','game-viewport');
     viewport.style.width=`${width}px`;viewport.style.height=`${height}px`;
     frame.style.width=`${width}px`;frame.style.height=`${project.playerFrameHeight||height+42}px`;
