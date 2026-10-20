@@ -1209,6 +1209,8 @@ html {
 
 .header {
   position: sticky;
+  width: 100%;
+  padding-inline: clamp(20px, 3vw, 64px);
   top: 0px;
   z-index: 40;
   background: var(--bg);
@@ -1224,7 +1226,7 @@ html {
   top: var(--header-height);
   z-index: 20;
   min-height: var(--game-title-height);
-  padding: 12px 0px;
+  padding: 12px clamp(20px, 3vw, 64px);
   background: var(--bg);
   border-bottom: 1px solid var(--line);
 }

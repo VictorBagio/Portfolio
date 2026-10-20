@@ -191,8 +191,8 @@ function createProject(project) {
   const content = make('div', 'game-content');
   content.append(createDetails(project), createGallery(project), createPlayable(project));
   layout.append(createProjectNavigation(project), content);
-  wrapper.append(createProjectTitle(project), layout);
-  article.append(wrapper);
+  wrapper.append(layout);
+  article.append(createProjectTitle(project), wrapper);
   return article;
 }
 
