@@ -1,10 +1,12 @@
 // Os builds continuam no itch.io. Nenhum iframe é criado antes do clique.
 let activeGame = null;
+const ITCH_FOOTER_HEIGHT = 21;
+const UNITY_FOOTER_HEIGHT = 42;
 function playableEmbed(value) {
   try {
     const url = new URL(value);
     if (url.protocol !== 'https:') return '';
-    const officialEmbed = url.hostname === 'itch.io' && url.pathname.startsWith('/embed-upload/');
+    const officialEmbed = url.hostname === 'itch.io' && /^\/embed-upload\/\d+$/.test(url.pathname);
     return officialEmbed ? url.href : '';
   } catch { return ''; }
 }
@@ -13,9 +15,9 @@ function mountGamePlayer(player, project, source) {
   const start = () => {
     player.classList.remove('has-frame');
     player.replaceChildren(make('span','play-symbol','▷'));
-    const button = make('button','button primary','Jogar aqui');
+    const button = make('button','button primary',t('startGame'));
     button.type='button'; button.addEventListener('click', load);
-    player.append(button, make('small','','Carrega do itch.io ao clicar.'));
+    player.append(button, make('small','',t('loadHint')));
     return button;
   };
   const stop = (restoreFocus=false) => {
@@ -28,11 +30,11 @@ function mountGamePlayer(player, project, source) {
     if(activeGame) activeGame.stop();
     player.classList.add('has-frame'); player.replaceChildren();
     const toolbar=make('div','game-toolbar');
-    const status=make('span','game-status','Carregando…');status.setAttribute('role','status');
-    const close=make('button','','Fechar jogo');close.type='button';
+    const status=make('span','game-status',t('loading'));status.setAttribute('role','status');
+    const close=make('button','',t('closeGame'));close.type='button';
     toolbar.append(status,close);
     const stage=make('div','game-stage');
-    const frame=make('iframe'); frame.title=`Jogar ${project.title}`;
+    const frame=make('iframe'); frame.title=t('frameTitle', { title: project.title });
     frame.allow="autoplay; gamepad; fullscreen 'none'";
     frame.setAttribute('scrolling','no');
     frame.referrerPolicy='strict-origin-when-cross-origin';frame.src=source;
@@ -41,12 +43,26 @@ function mountGamePlayer(player, project, source) {
     // Os controles do serviço ficam dentro do iframe oficial.
     const viewport=make('div','game-viewport');
     viewport.style.width=`${width}px`;viewport.style.height=`${height}px`;
-    frame.style.width=`${width}px`;frame.style.height=`${project.playerFrameHeight||height+42}px`;
-    viewport.append(frame);stage.append(viewport);player.append(toolbar,stage);
+    frame.style.width=`${width}px`;
+    frame.style.height=`${project.playerFrameHeight || height + UNITY_FOOTER_HEIGHT}px`;
+    viewport.append(frame);
+    // O iframe oficial é de outra origem. Cubra apenas o rodapé Unity,
+    // preservando o canvas e a barra de identificação do itch.io no final.
+    if(project.unityCanvasWidth && project.unityCanvasHeight){
+      const footerMask=make('div','unity-footer-mask');
+      footerMask.setAttribute('aria-hidden','true');
+      footerMask.style.width=`${project.unityCanvasWidth}px`;
+      footerMask.style.left=`${(width-project.unityCanvasWidth)/2}px`;
+      const canvasTop = (height - ITCH_FOOTER_HEIGHT - project.unityCanvasHeight - UNITY_FOOTER_HEIGHT) / 2 + 1;
+      footerMask.style.top=`${Math.ceil(canvasTop + project.unityCanvasHeight)}px`;
+      footerMask.style.background=project.embedBackground||'#333333';
+      viewport.append(footerMask);
+    }
+    stage.append(viewport);player.append(toolbar,stage);
     const resize=()=>{const scale=Math.min(stage.clientWidth/width,stage.clientHeight/height);viewport.style.transform=`translate(-50%, -50%) scale(${scale})`;};
     const observer=new ResizeObserver(resize);observer.observe(stage);resize();
     frame.addEventListener('load',()=>{status.textContent=project.title;});
-    frame.addEventListener('error',()=>{status.textContent='Não carregou? Use o link do itch.io abaixo.';});
+    frame.addEventListener('error',()=>{status.textContent=t('loadError');});
     close.addEventListener('click',()=>stop(true));
     cleanup=()=>observer.disconnect();
     activeGame={player,stop}; close.focus();

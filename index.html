@@ -1,19 +1,85 @@
 <!doctype html>
 <html lang="pt-BR">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Jogos com programação de Victor Bagio Gusto: Project: Aurea, The Last Case, Pig Rush e Go Deep."><meta name="theme-color" content="#101010">
-<title>Victor Bagio Gusto — Portfólio de jogos</title>
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="project-meta.css"><link rel="stylesheet" href="player.css"><script src="content.js" defer></script><script src="player.js" defer></script><script src="script.js" defer></script>
-</head>
-<body>
-<a class="skip" href="#conteudo">Pular para o conteúdo</a>
-<header class="header wrap"><a class="brand" href="#inicio">Victor Bagio Gusto</a><nav aria-label="Jogos"><a href="#aurea">Project: Aurea</a><a href="#last-case">The Last Case</a><a href="#pig-rush">Pig Rush</a><a href="#go-deep">Go Deep</a></nav><a class="github" href="https://github.com/VictorBagio" target="_blank" rel="noopener noreferrer">GitHub ↗</a></header>
-<main id="conteudo">
-<section id="inicio" class="hero wrap"><div class="hero-poster"><p class="eyebrow">PORTFÓLIO / PROGRAMAÇÃO DE JOGOS</p><h1>Victor<br><em>Bagio Gusto</em><span class="title-scratch" aria-hidden="true"></span></h1><div class="poster-mark" aria-hidden="true">✳</div></div><div class="hero-bottom"><div class="intro"><p>Sou estudante de Desenvolvimento de Jogos na FIAP e meu foco é programação.</p><p>Aqui reuni os jogos em que trabalhei, com espaço para mostrar minha participação, capturas e versões jogáveis.</p></div><a class="button primary" href="#projetos">Ver os jogos <span>↓</span></a></div><div class="hero-line"><span>JOGOS</span><span class="line-scribble" aria-hidden="true"></span></div></section>
-<div id="projetos"><div id="project-list"></div></div>
-<noscript><div class="wrap"><p>Ative o JavaScript para ver Project: Aurea, The Last Case, Pig Rush e Go Deep.</p></div></noscript>
-</main>
-<footer class="footer wrap"><div><a class="brand" href="#inicio">Victor Bagio Gusto</a><p>Programação de jogos</p></div><div class="footer-links"><a href="https://github.com/VictorBagio" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/victor-bagio-gusto-3b8469352/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="mailto:victorbagio8@icloud.com">E-mail ↗</a><a href="#inicio">Topo ↑</a></div></footer>
-<dialog id="image-dialog" aria-label="Print ampliado"><button class="close" aria-label="Fechar print">×</button><img id="full-image" alt=""><p id="image-caption"></p></dialog>
-</body></html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; style-src-attr 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; img-src 'self'; frame-src https://itch.io; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Jogos com programação de Victor Bagio Gusto: The Last Case, Go Deep, Pig Rush e Project: Aurea.">
+    <meta name="theme-color" content="#101010">
+    <title>Victor Bagio Gusto — Portfólio de jogos</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+    <script src="i18n.js" defer=""></script>
+    <script src="content.js" defer=""></script>
+    <script src="player.js" defer=""></script>
+    <script src="script.js" defer=""></script>
+  </head>
+  <body>
+    <a data-i18n="skip" class="skip" href="#conteudo">Pular para o conteúdo</a>
+    <header class="header wrap">
+      <a class="brand" href="#inicio">Victor Bagio Gusto</a>
+      <nav aria-label="Jogos" data-i18n-aria="games">
+        <a href="#last-case">The Last Case</a>
+        <a href="#go-deep">Go Deep</a>
+        <a href="#pig-rush">Pig Rush</a>
+        <a href="#aurea">Project: Aurea</a>
+      </nav>
+      <div class="header-actions">
+        <div class="language-toggle" role="group" aria-label="Idioma do site" data-i18n-aria="language">
+          <button type="button" data-language="pt" aria-pressed="true" lang="pt-BR" aria-label="Português do Brasil">PT-BR</button>
+          <button type="button" data-language="en" aria-pressed="false" lang="en" aria-label="English">EN</button>
+        </div>
+        <a class="github" href="https://github.com/VictorBagio" target="_blank" rel="noopener noreferrer">GitHub <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"></path></svg></a>
+        <a class="itch-link" href="https://vintao1.itch.io" target="_blank" rel="noopener noreferrer">itch.io <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"></path></svg></a>
+      </div>
+    </header>
+    <main id="conteudo">
+      <section id="inicio" class="hero wrap">
+        <div class="hero-poster">
+          <p class="eyebrow" data-i18n="eyebrow">PORTFÓLIO / PROGRAMAÇÃO DE JOGOS</p>
+          <h1>Victor<br><em>Bagio Gusto</em><span class="title-scratch" aria-hidden="true"></span></h1>
+        </div>
+        <div class="hero-bottom">
+          <div class="intro">
+            <p data-i18n="intro">Sou estudante de Desenvolvimento de Jogos na FIAP e meu foco é programação.</p>
+            <p data-i18n="introduction">Aqui reuni os jogos em que trabalhei, com espaço para mostrar minha participação, capturas e versões jogáveis.</p>
+          </div>
+          <a class="button primary" href="#projetos"><span data-i18n="explore">Ver os jogos</span> <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v16m-6-6 6 6 6-6"></path></svg></a>
+        </div>
+        <div class="hero-line">
+          <span data-i18n="gamesLabel">JOGOS</span>
+          <span class="line-scribble" aria-hidden="true"></span>
+        </div>
+      </section>
+      <div id="projetos">
+        <div id="project-list"></div>
+      </div>
+      <noscript>
+        <div class="wrap">
+          <p>Ative o JavaScript para ver The Last Case, Go Deep, Pig Rush e Project: Aurea.</p>
+        </div>
+      </noscript>
+    </main>
+    <footer class="footer wrap">
+      <div>
+        <a class="brand" href="#inicio">Victor Bagio Gusto</a>
+        <p data-i18n="footer">Programação de jogos</p>
+        <p class="ai-credit" data-i18n="aiCredit">Foi utilizada inteligência artificial no desenvolvimento dos sistemas de tradução e de integração dos jogos do itch.io à página, além da organização e depuração do código.</p>
+      </div>
+      <div class="footer-links">
+        <a class="itch-link" href="https://vintao1.itch.io" target="_blank" rel="noopener noreferrer">itch.io <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"></path></svg></a>
+        <a href="https://github.com/VictorBagio" target="_blank" rel="noopener noreferrer">GitHub <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"></path></svg></a>
+        <a href="https://www.linkedin.com/in/victor-bagio-gusto-3b8469352/" target="_blank" rel="noopener noreferrer">LinkedIn <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"></path></svg></a>
+        <a href="mailto:victorbagio8@icloud.com"><span data-i18n="email">E-mail</span> <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"></path></svg></a>
+        <a href="#inicio"><span data-i18n="top">Topo</span> <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 20V4m-6 6 6-6 6 6"></path></svg></a>
+      </div>
+    </footer>
+    <span class="sr-only" id="language-status" role="status"></span>
+    <dialog id="image-dialog" aria-label="Print ampliado" data-i18n-aria="imageDialog">
+      <button class="close" aria-label="Fechar print" data-i18n-aria="closeImage">×</button>
+      <img id="full-image" alt="">
+      <p id="image-caption"></p>
+    </dialog>
+  </body>
+</html>
